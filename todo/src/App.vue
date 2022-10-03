@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Todo msg="TODO LIST" />
+    <TodoMain></TodoMain>
   </div>
 </template>
 
 <script>
-import Todo from './components/Todo.vue'
+import TodoMain from './components/TodoMain.vue'
 
 export default {
   name: 'App',
   components: {
-    Todo
+    'TodoMain': TodoMain
   }
 }
 </script>
