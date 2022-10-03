@@ -1,11 +1,11 @@
 <template>
   <div>
     <h1>TODO LIST</h1>
-    <input class="inputBox" type="text" placeholder="할일을 입력하세요." v-model="todoItem" @keyup.enter="addTodo">
+    <input class="inputBox" type="text" placeholder="할일을 입력하세요." v-model="todoItem" v-on:keyup.enter="addTodo">
     <button v-on:click="addTodo">등록</button>
     <div>
       <ul>
-        <li v-for="list in todoList" :key="list">{{list}}
+        <li v-for="list in todoList" :key="list" v-on:click="deleteList(list)">{{list}} 삭제
         </li>
       </ul>
     </div>
@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       todoItem: '',
-      todoList: []
+      todoList: [],
     }
   },
   methods: {
@@ -29,7 +29,9 @@ export default {
       } else {
         alert('할일을 입력해주세요')
       }
-    },
+    }, deleteList: function (list) {
+      this.todoList = this.todoList.filter(ele => ele !== list)
+    }
   }
 
 }
@@ -45,5 +47,9 @@ body {
 
 input:focus {
   outline: none;
+}
+
+ul {
+  list-style: none;
 }
 </style>
